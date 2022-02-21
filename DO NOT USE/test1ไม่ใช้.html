@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="canvasjs.min.js"></script>
+<script type="text/javascript">
+var chart;
+window.onload = function () {
+	chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "My First Chart in CanvasJS"              
+		},
+		data: [              
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			type: "column",
+			dataPoints: [
+				{ label: "apple",  y: 10  },
+				{ label: "orange", y: 15  },
+				{ label: "banana", y: 25  },
+				{ label: "mango",  y: 30  },
+				{ label: "grape",  y: 28  }
+			]
+		}
+		]
+	});
+	chart.render();
+}
+
+function changeChartType(){
+	var sel = document.getElementById("tool");	
+	chart.options["data"][0].type = sel[sel.selectedIndex].value;
+	chart.render();
+}
+
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; max-width: 920px; margin: 0px auto;"></div>
+
+<select id="tool" onchange="changeChartType()">
+    <option value="column" selected>Column</option>
+    <option value="line" >Line</option>
+</select>
+
+</body>
+</html>
